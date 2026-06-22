@@ -23,6 +23,9 @@ if not os.path.exists(DB_PATH):
     conn.commit()
     conn.close()
     print("Database initialized")
+    # Auto-seed on first deploy
+    from seed import seed
+    seed()
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(bag_bp)
